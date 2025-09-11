@@ -38,7 +38,7 @@ public class Main {
                     System.out.println("En proceso");
                     break;
                 case 6:
-                    System.out.println("Saliendo");
+                    System.out.println("Saliendo....");
                     break;
                 default:
                     System.out.println("Error");
