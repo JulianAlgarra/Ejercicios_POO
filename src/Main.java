@@ -15,7 +15,7 @@ public class Main {
             System.out.println("2. Ejercicio tirada 3 dados.");
             System.out.println("3. Ejercicio Indice Masa Corporal.");
             System.out.println("4. Piedra, Papel o Tijeras");
-            System.out.println("5. ");
+            System.out.println("5. Juego Dados");
             System.out.println("6. Salir");
 
             System.out.println("Elija el numero del ejercicio al que desea ir: ");
@@ -35,7 +35,7 @@ public class Main {
                     vs_pc();
                     break;
                 case 5:
-                    System.out.println("En proceso");
+                    juego_dados();
                     break;
                 case 6:
                     System.out.println("Saliendo....");
@@ -202,5 +202,51 @@ public class Main {
             System.out.println("Perdiste, la máquina gana.");
         }
     }
+    }
+    public static void juego_dados(){
+        Random opcion_j1 = new Random();
+        Random opcion_j2 = new Random();
+        int j1, j2;
+        int puntos_j1=0, puntos_j2=0;
+        int resta_1=0, resta_2=0;
+
+        do {
+            j1 = opcion_j1.nextInt((6 - 1) + 1) + 1;
+            if (j1 == 1) {
+                puntos_j1-= j1;
+            } else {
+                puntos_j1 += j1;
+            }
+            System.out.println("El jugador 1 tiro el dado, resultado= " + j1);
+            System.out.println("El jugador 1 tiene Puntos= " +puntos_j1 );
+
+
+            j2 = opcion_j2.nextInt((6 - 1) + 1) + 1;
+            if (j2 == 1) {
+                puntos_j2-= j2;
+            } else {
+                puntos_j2 += j2;
+            }
+            System.out.println("El jugador 2 tiro el dado, resultado= " + j2);
+            System.out.println("El jugador 2 tiene Puntos= " +puntos_j2);
+
+
+            if (puntos_j1>puntos_j2){
+                resta_1 = puntos_j1 - puntos_j2;
+
+            } else if (puntos_j2>puntos_j1) {
+                resta_2 = puntos_j2 - puntos_j1;
+
+            }
+
+        }while ((resta_1 <=3)&&(resta_2<=3));
+
+        if (resta_1>=3) {
+            System.out.println("Fin Del juego, el jugador 1 gana con un total de " + puntos_j1 + " Puntos");
+            System.out.println("Fin Del juego, el jugador 2 gana con un total de " + puntos_j2 + " Puntos");
+        }else if (resta_2>=3) {
+            System.out.println("Fin Del juego, el jugador 2 gana con un total de " + puntos_j2 + " Puntos");
+            System.out.println("Fin Del juego, el jugador 1 pierde con un total de " + puntos_j1 + " Puntos");
+        }
     }
 }
