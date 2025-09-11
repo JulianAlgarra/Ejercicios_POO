@@ -41,7 +41,7 @@ public class Main {
                     System.out.println("Saliendo....");
                     break;
                 default:
-                    System.out.println("Error");
+                    System.out.println("Error..");
             }
 
         }
