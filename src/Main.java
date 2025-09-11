@@ -1,46 +1,50 @@
 import java.util.*;
 
+
 public class Main {
     public static void main(String[] args) {
         menu();
     }
-    public static void  menu(){
+    public static void  menu() {
         Scanner sc = new Scanner(System.in);
-        int opcion;
-        System.out.println("Menu opciones Ejercicios");
-        System.out.println("1. Ejercicio tirada 2 dados.");
-        System.out.println("2. Ejercicio tirada 3 dados.");
-        System.out.println("3. Ejercicio Indice Masa Corporal.");
-        System.out.println("4. ");
-        System.out.println("5. ");
-        System.out.println("6. Salir");
+        int opcion=0;
 
-        System.out.println("Elija el numero del ejercicio al que desea ir: " );
-        opcion = sc.nextInt();
+        while (opcion != 6) {
+            System.out.println("Menu opciones Ejercicios");
+            System.out.println("1. Ejercicio tirada 2 dados.");
+            System.out.println("2. Ejercicio tirada 3 dados.");
+            System.out.println("3. Ejercicio Indice Masa Corporal.");
+            System.out.println("4. Piedra, Papel o Tijeras");
+            System.out.println("5. ");
+            System.out.println("6. Salir");
 
-        switch (opcion){
-            case 1:
-                dados2();
-                break;
-            case 2:
-                dados3();
-                break;
-            case 3:
-                System.out.println(imc());
-                break;
-            case 4:
-                System.out.println("En proceso");
-                break;
-            case 5:
-                System.out.println("En proceso 1");
-                break;
-            case 6:
-                System.out.println("Saliendo");
-                break;
-            default:
-                System.out.println("Error");
+            System.out.println("Elija el numero del ejercicio al que desea ir: ");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    dados2();
+                    break;
+                case 2:
+                    dados3();
+                    break;
+                case 3:
+                    System.out.println(imc());
+                    break;
+                case 4:
+                    vs_pc();
+                    break;
+                case 5:
+                    System.out.println("En proceso");
+                    break;
+                case 6:
+                    System.out.println("Saliendo");
+                    break;
+                default:
+                    System.out.println("Error");
+            }
+
         }
-
     }
     public static void dados2(){
         Random tiradas = new Random();
@@ -138,5 +142,65 @@ public class Main {
             resultado = "Usted tiene Obesidad Tipo 4 = ";
         }
         return resultado +imc;
+    }
+    public static void vs_pc(){
+        Scanner opcion_jugador = new Scanner(System.in);
+        Random opcion_pc = new Random();
+        int jugador=0, pc;
+        String eleccion_pc= "",eleccion_jugador = "";
+
+        while (jugador != 4) {
+            System.out.println("Piedra, Papel o tijeras");
+            System.out.println("Escoge un numero de 1-3 para tu eleccion ");
+            System.out.println("1. Piedra");
+            System.out.println("2. Papel");
+            System.out.println("3. Tijera");
+            System.out.println("4. Salir");
+            jugador = opcion_jugador.nextInt();
+            pc = opcion_pc.nextInt((3 - 1) + 1) + 1;
+
+        switch (jugador){
+            case 1:
+                eleccion_jugador ="Piedra";
+                break;
+            case 2:
+                eleccion_jugador ="Papel";
+                break;
+            case 3:
+                eleccion_jugador ="Tijera";
+                break;
+            case 4:
+                System.out.println("Saliendo.......");
+            default:
+                System.out.println("Opcion no valida");
+        }
+
+        switch (pc){
+            case 1:
+                eleccion_pc ="Piedra";
+                break;
+            case 2:
+                eleccion_pc ="Papel";
+                break;
+            case 3:
+                eleccion_pc ="Tijera";
+                break;
+            default:
+                System.out.println("Opcion no valida");
+        }
+
+        System.out.println("Tu elección: " + eleccion_jugador);
+        System.out.println("La máquina eligió: " + eleccion_pc);
+
+        if (jugador == pc) {
+            System.out.println("¡Empate!");
+        } else if ((jugador == 1 && pc == 3) ||
+                (jugador == 2 && pc == 1) ||
+                (jugador == 3 && pc == 2)) {
+            System.out.println("¡Ganaste!");
+        } else {
+            System.out.println("Perdiste, la máquina gana.");
+        }
+    }
     }
 }
